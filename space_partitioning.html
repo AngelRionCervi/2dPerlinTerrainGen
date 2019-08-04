@@ -1,0 +1,104 @@
+
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta charset="UTF-8">
+</head>
+	<body>
+
+		<canvas id="canvas" width="1200" height="900"></canvas> 
+
+		<script type="text/javascript" src="js/lib/lodash.js"></script>
+		<script type="text/javascript">
+			
+			let canvas = document.getElementById('canvas');
+			let ctx = canvas.getContext('2d');
+
+			let fill = ['red', 'green', 'blue', 'orange', 'purple', 'black'];
+
+			let primeRectCoor = [];
+
+			let rndmRectXLength = _.random(150, 300);
+            let rndmRectYLength = _.random(150, 300);
+			let rndmRectXStart = _.random(100, canvas.width - 100 - rndmRectXLength);
+			let rndmRectYStart = _.random(100, canvas.height - 100 - rndmRectYLength);
+			//let rndmSide = _.random(1, 1);
+			let sqr1 = [rndmRectXStart, rndmRectYStart, rndmRectXLength, rndmRectYLength]
+			let sqr2 = [0, 0, rndmRectXStart + rndmRectXLength, rndmRectYStart];
+			let sqr3 = [0, rndmRectYStart, rndmRectXStart, canvas.height - rndmRectYStart];
+			let sqr4 = [rndmRectXStart, rndmRectYStart + rndmRectYLength, canvas.width - rndmRectXStart, canvas.height - rndmRectYStart];
+			let sqr5 = [rndmRectXStart + rndmRectXLength, 0, canvas.width - rndmRectXLength - rndmRectXStart, rndmRectYStart + rndmRectYLength];
+		
+/*
+			ctx.fillStyle = fill[0];
+			ctx.fillRect(rndmRectXStart, rndmRectYStart, rndmRectXLength, rndmRectYLength);
+			ctx.fillStyle = fill[1];
+			ctx.fillRect(sqr2[0], sqr2[1], sqr2[2], sqr2[3]);
+			ctx.fillStyle = fill[2];
+			ctx.fillRect(sqr3[0], sqr3[1], sqr3[2], sqr3[3]);
+			ctx.fillStyle = fill[3];
+			ctx.fillRect(sqr4[0], sqr4[1], sqr4[2], sqr4[3]);
+			ctx.fillStyle = fill[4];
+			ctx.fillRect(sqr5[0], sqr5[1], sqr5[2], sqr5[3]);*/
+
+
+
+			primeRectCoor.push(sqr1, sqr2, sqr3, sqr4, sqr5);
+
+
+
+			primeRectCoor.forEach((v, i, a) => {
+
+				let subRectCoor = [];
+				
+				let subRndmRectXlength = _.random(v[2]/4, v[2]/2.5);
+				if(subRndmRectXlength < 100) subRndmRectXlength = 100;
+
+				let subRndmRectYlength = _.random(v[3]/4, v[3]/2.5);
+				if(subRndmRectYlength < 100) subRndmRectYlength = 100;
+
+				let subRndmRectXstart = _.random(50, v[2] - 50 - subRndmRectXlength);
+				let subRndmRectYstart = _.random(50, v[3] - 50 - subRndmRectYlength);
+
+				let subSqr1 = [subRndmRectXstart, subRndmRectYstart, subRndmRectXlength, subRndmRectYlength];
+				let subSqr2 = [0, 0, subRndmRectXstart + subRndmRectXlength, subRndmRectYstart];
+				console.log(subSqr2)
+				let subSqr3 = [0, subRndmRectYstart, subRndmRectXstart, v[3]-subRndmRectYstart+subRndmRectYlength];
+				let subSqr4 = [subRndmRectXstart, subRndmRectYstart + subRndmRectYlength, v[2] - subRndmRectXstart, v[3] - subRndmRectYstart];
+				let subSqr5 = [subRndmRectXstart + subRndmRectXlength, 0, v[2] - subRndmRectXlength - subRndmRectXstart, subRndmRectYlength + subRndmRectYstart];
+
+				subRectCoor.push(subSqr1, subSqr2, subSqr3, subSqr4, subSqr5);
+		
+
+				ctx.fillStyle = fill[0];
+				ctx.fillRect(v[0] + subSqr1[0], v[1] + subSqr1[1], subSqr1[2], subSqr1[3]);
+				ctx.fillStyle = fill[1];
+				ctx.fillRect(v[0] + subSqr2[0], v[1] + subSqr2[1], subSqr2[2], subSqr2[3]);
+				ctx.fillStyle = fill[2];
+				ctx.fillRect(v[0] + subSqr3[0], v[1] + subSqr3[1], subSqr3[2], subSqr3[3]);
+				ctx.fillStyle = fill[3];
+				ctx.fillRect(v[0] + subSqr4[0], v[1] + subSqr4[1], subSqr4[2], subSqr4[3]);
+				ctx.fillStyle = fill[4];
+				ctx.fillRect(v[0] + subSqr5[0], v[1] + subSqr5[1], subSqr5[2], subSqr5[3]);
+
+
+				subRectCoor.forEach((v2, i2, a2)=>{
+					if(i<2){
+
+    				ctx.fillStyle = 'black';
+		        for (let x = 0; x < v2[2]+1; x += 5) {
+  			       for (let y = 0; y < v2[3]+1; y += 5) {
+  			       	
+    				ctx.fillRect(x+v[0]+v2[0], y+v[1]+v2[1], 5, 5)
+  			       }
+  			   }
+  			   }
+				
+				
+			})
+			})
+			
+
+		</script>
+	</body>
+</html>
