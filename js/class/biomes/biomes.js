@@ -27,10 +27,10 @@ class Biomes {
 		if(elevation < 190 && elevation > 160){
 			val = new Beach(climate, river);
 		}
-		if(elevation <= 160 && elevation >= 90){
+		if(elevation <= 160 && elevation >= 70){
 			val = new Middle(climate, river);
 		}
-		if(elevation < 90){
+		if(elevation < 70){
 			val = new Top(climate);
 		}
 		return val;

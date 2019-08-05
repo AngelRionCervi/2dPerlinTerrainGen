@@ -18,46 +18,44 @@
 
 			let primeRectCoor = [];
 
-			let rndmRectXLength = _.random(300, 500);
-            let rndmRectYLength = _.random(300, 500);
-			let rndmRectXStart = _.random(300, canvas.width - 300 - rndmRectXLength);
-			let rndmRectYStart = _.random(300, canvas.height - 300 - rndmRectYLength);
+			let squareWidth = canvas.width/2;
+			let squareHeight = canvas.height/2;
+            
 			
 			//let rndmSide = _.random(1, 1);
-			let sqr1 = [rndmRectXStart, rndmRectYStart, rndmRectXLength, rndmRectYLength]
-			let sqr2 = [0, 0, rndmRectXStart + rndmRectXLength, rndmRectYStart];
-			let sqr3 = [0, rndmRectYStart, rndmRectXStart, canvas.height - rndmRectYStart];
-			let sqr4 = [rndmRectXStart, rndmRectYStart + rndmRectYLength, canvas.width - rndmRectXStart, canvas.height - rndmRectYStart];
-			let sqr5 = [rndmRectXStart + rndmRectXLength, 0, canvas.width - rndmRectXLength - rndmRectXStart, rndmRectYStart + rndmRectYLength];
+			let sqr1 = [0, 0, squareWidth, squareHeight]
+			let sqr2 = [0, squareHeight, squareWidth, squareHeight];
+			let sqr3 = [squareWidth, 0, squareWidth, squareHeight];
+			let sqr4 = [squareWidth, squareHeight, squareWidth, squareHeight];
+			
 		
 
 			ctx.fillStyle = fill[0];
-			ctx.fillRect(rndmRectXStart, rndmRectYStart, rndmRectXLength, rndmRectYLength);
+			ctx.fillRect(0, 0, squareWidth, squareHeight);
 			ctx.fillStyle = fill[1];
-			ctx.fillRect(sqr2[0], sqr2[1], sqr2[2], sqr2[3]);
+			ctx.fillRect(0, squareHeight, squareWidth, squareHeight);
 			ctx.fillStyle = fill[2];
-			ctx.fillRect(sqr3[0], sqr3[1], sqr3[2], sqr3[3]);
+			ctx.fillRect(squareWidth, 0, squareWidth, squareHeight);
 			ctx.fillStyle = fill[3];
-			ctx.fillRect(sqr4[0], sqr4[1], sqr4[2], sqr4[3]);
-			ctx.fillStyle = fill[4];
-			ctx.fillRect(sqr5[0], sqr5[1], sqr5[2], sqr5[3]);
+			ctx.fillRect(squareWidth, squareHeight, squareWidth, squareHeight);
 
 
 
-			primeRectCoor.push(sqr1, sqr2, sqr3, sqr4, sqr5);
+
+			primeRectCoor.push(sqr1, sqr2, sqr3, sqr4);
 
 			primeRectCoor.forEach((v2, i2, a2)=>{
 					
-				if(i2<2){
+				
     				ctx.fillStyle = 'black';
 				
 		        for (let x = 0; x < v2[2]+1; x += 5) {
   			       for (let y = 0; y < v2[3]+1; y += 5) {
   			       	
-    				ctx.fillRect(x+v2[0], y+v2[1], 5, 5)
+    				ctx.fillRect(x+v2[0], y+v2[1], 2, 2)
   			       }
   			   }
-  			   }
+  			   
   			   
 				
 				

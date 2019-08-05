@@ -28,7 +28,7 @@ class Top extends Biomes {
     		return '#D6C3DE';
     	}
     	if(climate === 'cold'){
-    		return '#FFFFFF';
+    		return '#D6C3DE';
     	}
     	if(climate === 'hot'){
     		return '#A5682A';
