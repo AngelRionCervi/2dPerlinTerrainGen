@@ -13,6 +13,9 @@ class Biomes {
 		if (type === 'forest') {
 			return new Forest();
 		}
+		if (type === 'reef') {
+			return new Reef();
+		}
 	}
 
 	createBiomeDimensions(){
@@ -21,8 +24,11 @@ class Biomes {
 
 	getBiomeByNoise(elevation, climate, river){
 		let val;
-		if(elevation > 190){
+		if(elevation > 240){
 			val = new Sea(climate);
+		}
+		if(elevation > 190 && elevation < 240){
+			val = new Reef(climate);
 		}
 		if(elevation < 190 && elevation > 160){
 			val = new Beach(climate, river);

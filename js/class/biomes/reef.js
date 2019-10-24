@@ -1,15 +1,14 @@
-class Beach extends Biomes {
-    constructor(climateNoise, river){
+class Reef extends Biomes {
+    constructor(climateNoise){
         super(); 
-        this.name = 'beach';
+        this.name = 'reef';
         this.climateNoise = climateNoise;
         this.climate = this.getClimate(climateNoise);
-        this.isRiver = this.isRiver(river);
         this.tileColor = this.getTileColor(this.climate);
     }
 
     init(){
-    	console.log('init sea')
+    	console.log('init reef')
     }
 
     getClimate(){
@@ -21,22 +20,10 @@ class Beach extends Biomes {
     }
 
     getTileColor(climate){
-        if(this.isRiver){
+        if(climate === 'hot'){
             return '#3C5DF0';
         }else{
-            if(climate === 'hot'){
-                return '#f5dd42';
-            }else{
-                return '#f5dd42';
-            }
-        }
-    }
-
-    isRiver(riverNoise){
-        if(riverNoise < 40){
-            return true;
-        }else{
-            return false;
+            return '#3C5DF0'
         }
     }
 

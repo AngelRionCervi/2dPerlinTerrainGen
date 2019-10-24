@@ -26,7 +26,7 @@ class Middle extends Biomes {
 
     getTileColor(climate){
          if(this.isRiver){
-            return '#0c35ed';
+            return '#3C5DF0';
         }else{
             if(climate === 'normal'){
                 return '#00c42e';
