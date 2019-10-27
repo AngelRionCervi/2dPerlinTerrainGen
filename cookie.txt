@@ -1,0 +1,12 @@
+cookie clicker ?
+
+-1 click 1 cookie
+-can buy upgrades to make more cookies automaticaly
+-goal is to have as much cookie as possible / produce as fast as possible
+
+
+bio clicker ?
+
+-only terrain can be altered
+-new species appears depending on terrain aspect (distance from the sea/land, biome type/size...)
+-more species/more individual = more points
