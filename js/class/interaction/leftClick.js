@@ -11,7 +11,7 @@ function getCursorPosition(canvas, event) {
 }
 
 function addSand(x, y) {
-	targetTile = tiles[Math.floor(x/4)][Math.floor(y/4)];
+	targetTile = tiles[Math.floor(x/tileSize)][Math.floor(y/tileSize)];
 	console.log(targetTile)
 	switch (targetTile.info.name) {
 		case 'sea' :

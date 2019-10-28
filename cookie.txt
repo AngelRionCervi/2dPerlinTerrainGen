@@ -10,3 +10,4 @@ bio clicker ?
 -only terrain can be altered
 -new species appears depending on terrain aspect (distance from the sea/land, biome type/size...)
 -more species/more individual = more points
+-aletring terrain in middle of ocean = cost more than near coast
