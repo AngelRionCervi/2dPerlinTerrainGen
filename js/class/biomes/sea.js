@@ -6,7 +6,7 @@ class Sea extends Biomes {
         this.climate = this.getClimate(climateNoise);
         this.tileColor = this.getTileColor(this.climate);
         this.waveSize = 6;
-        this.waveSpeed = 300; // ms
+        this.waveSpeed = 500; // ms
         this.waveFrames = 10; // number of frames for the animation
     }
 
@@ -55,6 +55,7 @@ class Sea extends Biomes {
 
             wavePixelsPos.forEach((v, i, a) => {
                 
+                // checks so the wave doesnt change color of the land
                 if(tiles[v.pos.x+(xInc/tileSize)][v.pos.y+(yInc/tileSize)].info.color === "#0c35ed") {
                     ctx.fillStyle = '#1F46F4';
                     ctx.fillRect(v.pixelPos.x+xInc, v.pixelPos.y+yInc, tileSize, tileSize)
