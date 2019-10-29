@@ -5,9 +5,9 @@ class Sea extends Biomes {
         this.climateNoise = climateNoise;
         this.climate = this.getClimate(climateNoise);
         this.tileColor = this.getTileColor(this.climate);
-        this.waveSize = 6;
+        this.waveSize = 5;
         this.waveSpeed = 500; // ms
-        this.waveFrames = 10; // number of frames for the animation
+        this.waveFrames = 15; // number of frames for the animation
     }
 
     init(){
@@ -24,9 +24,9 @@ class Sea extends Biomes {
 
     getTileColor(climate){
         if(climate === 'hot'){
-            return '#0c35ed';
+            return seaColor;
         }else{
-            return '#0c35ed';
+            return seaColor;
         }
     }
 
@@ -56,12 +56,20 @@ class Sea extends Biomes {
             wavePixelsPos.forEach((v, i, a) => {
                 
                 // checks so the wave doesnt change color of the land
-                if(tiles[v.pos.x+(xInc/tileSize)][v.pos.y+(yInc/tileSize)].info.color === "#0c35ed") {
-                    ctx.fillStyle = '#1F46F4';
+                if(tiles[v.pos.x+(xInc/tileSize)][v.pos.y+(yInc/tileSize)].info.color === seaColor) {
+
+                    if(frameCount === 0 || frameCount === 1 || frameCount === this.waveFrames-3 ||frameCount === this.waveFrames-2) {
+                        ctx.fillStyle = waveColorsStartEnd[i];
+                    } else if (frameCount === this.waveFrames-1) {
+                        ctx.fillStyle = waveColorsEnd[i]; 
+                    } else {
+                        ctx.fillStyle = waveColorsPeak[i]; 
+                    }
+                   
                     ctx.fillRect(v.pixelPos.x+xInc, v.pixelPos.y+yInc, tileSize, tileSize)
                 }
-                if(tiles[v.pos.x+(xInc/tileSize)+1][v.pos.y+(yInc/tileSize)-1].info.color === "#0c35ed") {
-                    ctx.fillStyle = "#0c35ed";
+                if(tiles[v.pos.x+(xInc/tileSize)+1][v.pos.y+(yInc/tileSize)-1].info.color === seaColor) {
+                    ctx.fillStyle = seaColor;
                     ctx.fillRect(v.pixelPos.x+xInc+tileSize, v.pixelPos.y+yInc-tileSize, tileSize, tileSize)
                 }
                     
@@ -69,19 +77,21 @@ class Sea extends Biomes {
             
             xInc -= tileSize;
             yInc += tileSize;
-            frameCount++;
 
             if(frameCount === this.waveFrames) {
             
                 wavePixelsPos.forEach((v, i, a) => {
-                    if(tiles[v.pos.x+(xInc/tileSize)+1][v.pos.y+(yInc/tileSize)-1].info.color === "#0c35ed") {
-                        ctx.fillStyle = "#0c35ed";
+                    if(tiles[v.pos.x+(xInc/tileSize)+1][v.pos.y+(yInc/tileSize)-1].info.color === seaColor) {
+                        ctx.fillStyle = seaColor;
                         ctx.fillRect(v.pixelPos.x+xInc+tileSize, v.pixelPos.y+yInc-tileSize, tileSize, tileSize)
                     }
                 })
                 
                 clearInterval(animation);
             }
+
+            frameCount++;
+
         }, this.waveSpeed);
     
     }

@@ -29,13 +29,13 @@ class Middle extends Biomes {
             return '#3C5DF0';
         }else{
             if(climate === 'normal'){
-                return '#00c42e';
+                return normalForestColor;
             }
             if(climate === 'cold'){
-                return '#00801e';
+                return coldForestColor;
             }
             if(climate === 'hot'){
-                return '#f5dd42';
+                return sandColor;
             }
         }
     }

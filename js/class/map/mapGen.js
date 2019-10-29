@@ -130,9 +130,12 @@ class Map {
         let sea = new Sea();
 
         setInterval(()=>{
-            sea.createWaves();
-            sea.createWaves();
-            sea.createWaves();
+
+            let waveNumber = _.random(0, 5);
+
+            for(let n=0; n<waveNumber; n++) {
+                sea.createWaves();
+            }
         }, 1000)
         
     }

@@ -21,9 +21,9 @@ class Reef extends Biomes {
 
     getTileColor(climate){
         if(climate === 'hot'){
-            return '#3C5DF0';
+            return reefColor;
         }else{
-            return '#3C5DF0'
+            return reefColor;
         }
     }
 

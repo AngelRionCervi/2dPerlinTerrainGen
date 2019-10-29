@@ -25,13 +25,13 @@ class Top extends Biomes {
 
     getTileColor(climate, river){
     	if(climate === 'normal'){
-    		return '#D6C3DE';
+    		return normalMountainColor;
     	}
     	if(climate === 'cold'){
-    		return '#D6C3DE';
+    		return normalMountainColor;
     	}
     	if(climate === 'hot'){
-    		return '#A5682A';
+    		return hotMountainColor;
     	}
     }
 

@@ -18,5 +18,6 @@ function addSand(x, y) {
 			let biome = new Reef();
 			ctx.fillStyle = biome.getTileColor();
 			ctx.fillRect(targetTile.pos.x*tileSize, targetTile.pos.y*tileSize, tileSize, tileSize);
+			tiles[Math.floor(x/tileSize)][Math.floor(y/tileSize)].info = biome.getBiomeInfo;
 	}
 }

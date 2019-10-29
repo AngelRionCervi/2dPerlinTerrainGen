@@ -22,12 +22,12 @@ class Beach extends Biomes {
 
     getTileColor(climate){
         if(this.isRiver){
-            return '#3C5DF0';
+            return riverColor;
         }else{
             if(climate === 'hot'){
-                return '#f5dd42';
+                return sandColor;
             }else{
-                return '#f5dd42';
+                return sandColor;
             }
         }
     }
