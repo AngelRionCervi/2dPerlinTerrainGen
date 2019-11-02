@@ -11,13 +11,13 @@ let shift = false;
 let mainTargetBiome = "";
 let startedClick = false;
 
-window.addEventListener('keydown', (event)=>{
+window.addEventListener('keydown', (event) => {
   if (event.keyCode === 16) { //shift left
     shift = true;
   } 
 })
 
-window.addEventListener('keyup', (event)=>{
+window.addEventListener('keyup', (event) => {
   if (event.keyCode === 16) { //shift left
     shift = false;
   } 

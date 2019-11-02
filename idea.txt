@@ -1,0 +1,8 @@
+- modify base perlin noise value ?? if yes before do =>
+- second perlin noise map for sea ?
+gen des océans après les iles sur une autre perlin map qui prend tout le canva et qui soustrait les values des première iles pour avoir une progression du sol marin normal.
+
+- marine current for erosion (+ wave orientation change ?)
+- global climate (+ micro climate ?)
+
+- different pattern for drawing
