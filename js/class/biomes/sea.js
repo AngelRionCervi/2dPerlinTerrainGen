@@ -34,6 +34,23 @@ class Sea extends Biomes {
     	return {color: this.tileColor, name: this.name};
     }
 
+    getSeaDepth(elevation){
+        let val;
+        if(elevation > 240){
+            val = seaDepthColor[3];
+        }
+        if(elevation > 190 && elevation < 240){
+            val = seaDepthColor[2]
+        }
+        if(elevation < 190 && elevation > 160){
+            val = seaDepthColor[1]
+        }
+        if(elevation < 160){
+            val = seaDepthColor[0]
+        }
+        return val;
+    }
+
     createWaves(){
         
         // spawns the wave in x y where it cannot hit a map border

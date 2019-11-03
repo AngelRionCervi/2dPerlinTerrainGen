@@ -13,7 +13,7 @@ class Map {
         canvas.height = 900;
 
         for (let n=0; n<closestNumber(canvas.width/tileSize, tileSize); n++){
-            tiles.push(new Array(closestNumber(canvas.height/tileSize, tileSize)).fill(0))
+            tiles.push(new Array(canvas.height/tileSize).fill(0))
         }
 
         
@@ -99,10 +99,6 @@ class Map {
                     rivers = rivers * 1.2;
                     let tileRivers = Math.abs(rivers) * 256;
 
-                    let idk = noise.perlin2((x+50) / 100, (y+50) / 100);
-                    idk = (1 + idk) * 0.8;
-                    let tileidk = Math.abs(idk) * 256;
-
                     let tileType = this.biomes.getBiomeByNoise(tileElevation, tileClimate, tileRivers); // returns a biome
 
                     ctx.globalAlpha = 1;
@@ -115,14 +111,34 @@ class Map {
             }
         })
 
-        tiles.forEach((subArr, index) => { // fill 0 of tiles with the sea biome
-            subArr.forEach((v, i, a) => {
+        tiles.forEach((yArr, index) => { // fill 0 of tiles with the sea biome
+            yArr.forEach((v, i, a) => {
                 if(v === 0) {
                     let biome = new Sea();
                     a[i] = {info: biome.getBiomeInfo(), pos:{x:index, y:i}, pixelPos:{x:index*tileSize, y:i*tileSize}}
                 }
             })
         })
+
+        for (let x = 0; x < canvas.width; x += tileSize) {
+            for (let y = 0; y < canvas.height; y += tileSize) {
+
+                let sea = new Sea();
+
+                let idk = noise.perlin2((x) / 500, (y) / 500);
+                idk = (1 + idk) * 1.5;
+                let tileidk = Math.abs(idk) * 256;
+
+                ctx.fillStyle = sea.getSeaDepth(tileidk);
+
+                
+                //console.log(tiles[Math.floor(x/tileSize)][Math.floor(y/tileSize)])
+                if(tiles[Math.floor(x/tileSize)][Math.floor(y/tileSize)].info.name === "sea") {
+                    //ctx.fillStyle = 'rgb(' + tileidk + ',' + tileidk + ',' + tileidk + ')';
+                    ctx.fillRect(Math.floor(x), Math.floor(y), tileSize, tileSize);
+                }
+            }
+        }
 
     }
 
@@ -134,9 +150,9 @@ class Map {
             let waveNumber = _.random(0, 5);
 
             for(let n=0; n<waveNumber; n++) {
-                sea.createWaves();
+                //sea.createWaves();
             }
-        }, 1000)
+        }, 2000)
         
     }
 

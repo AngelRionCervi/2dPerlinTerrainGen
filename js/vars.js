@@ -18,4 +18,6 @@ const waveColorsPeak = ['#163EF1', '#1A42F2', '#1F46F4', '#1A42F2', '#163EF1'];
 const waveColorsStartEnd = [seaColor, '#163EF1', '#1A42F2', '#163EF1', seaColor];
 const waveColorsEnd = [seaColor, seaColor, '#163EF1', seaColor, seaColor];
 
+const seaDepthColor = ['#3C5DF0', '#2C50EF', '#1C42EE', '#0C35ED']
+
 
