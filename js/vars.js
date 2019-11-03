@@ -1,9 +1,11 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
+let timer = document.getElementById("timer");
 
 let tiles = [];
 
 const tileSize = 4;
+const mainLoopRefreshRate = 1000 //ms
 
 const seaColor = "#0c35ed";
 const sandColor = '#f5dd42';
@@ -17,5 +19,7 @@ const hotMountainColor = "#A5682A";
 const waveColorsPeak = ['#163EF1', '#1A42F2', '#1F46F4', '#1A42F2', '#163EF1'];
 const waveColorsStartEnd = [seaColor, '#163EF1', '#1A42F2', '#163EF1', seaColor];
 const waveColorsEnd = [seaColor, seaColor, '#163EF1', seaColor, seaColor];
+
+let timerValue = 0;
 
 

@@ -129,7 +129,7 @@ class Map {
     animate(){
         let sea = new Sea();
 
-        setInterval(()=>{
+        setInterval(() => {
 
             let waveNumber = _.random(0, 5);
 

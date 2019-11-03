@@ -1,5 +1,5 @@
 class Biomes {
-	consctructor(){
+	constructor(){
 		this.tileAmount = 20;
 	}
 
