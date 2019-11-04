@@ -9,6 +9,7 @@ const tileSize = 4;
 const mainLoopRefreshRate = 1000 //ms
 
 const seaColor = "#0c35ed";
+const iceColor = "#9ED8F0";
 const sandColor = '#f5dd42';
 const reefColor = '#3C5DF0';
 const riverColor = '#3C5DF0';

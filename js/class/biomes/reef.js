@@ -23,7 +23,15 @@ class Reef extends Biomes {
         if(climate === 'hot'){
             return reefColor;
         }else{
+            return iceColor;
+        }
+    }
+
+    getTileColorByNoise(){
+        if(this.climate > 125){
             return reefColor;
+        }else{
+            return iceColor;
         }
     }
 

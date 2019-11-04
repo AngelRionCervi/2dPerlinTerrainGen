@@ -27,13 +27,17 @@ class Map {
         for (let x = 0; x < canvas.width; x += tileSize) {
             for (let y = 0; y < canvas.height; y += tileSize) {
 
-                let sea = new Sea();
 
                 let climate = noise.perlin2((x) / 800, (y) / 800);
                 climate = (1 + climate) * 0.9;
                 let tileClimate = Math.abs(climate) * 256;
 
                 tilesClimate[Math.floor(x/tileSize)][Math.floor(y/tileSize)] = tileClimate;
+
+                let sea = new Sea(tileClimate);
+
+                ctx.fillStyle = sea.getTileColorByNoise();
+                ctx.fillRect(x, y, tileSize, tileSize);
             }
         }
 
@@ -120,7 +124,7 @@ class Map {
                     ctx.fillStyle = tileType.getBiomeInfo().color
                     //ctx.fillStyle = 'rgb(' + tileElevation + ',' + tileElevation + ',' + tileElevation + ')';
                     ctx.fillRect(Math.floor(x+v[0]), Math.floor(y+v[1]), tileSize, tileSize)
-                    tiles[Math.floor((x+v[0])/tileSize)][Math.floor((y+v[1])/tileSize)] = {info: tileType.getBiomeInfo(), pos: {x:Math.floor((x+v[0])/tileSize), y:Math.floor((y+v[1])/tileSize)}, pixelPos: {x:Math.floor(x+v[0]), y:Math.floor(y+v[1])}}
+                    tiles[Math.floor((x+v[0])/tileSize)][Math.floor((y+v[1])/tileSize)] = {info: tileType.getBiomeInfo(), pos: {x:Math.floor((x+v[0])/tileSize), y:Math.floor((y+v[1])/tileSize)}, pixelPos: {x:Math.floor(x+v[0]), y:Math.floor(y+v[1])}, climate: {value: tilesClimate[Math.floor((x+v[0])/tileSize)][Math.floor((y+v[0])/tileSize)]}}
                 }
 
             }
@@ -130,7 +134,7 @@ class Map {
             subArr.forEach((v, i, a) => {
                 if(v === 0) {
                     let biome = new Sea();
-                    a[i] = {info: biome.getBiomeInfo(), pos:{x:index, y:i}, pixelPos:{x:index*tileSize, y:i*tileSize}, climate: tilesClimate[index][i]}
+                    a[i] = {info: biome.getBiomeInfo(), pos:{x:index, y:i}, pixelPos:{x:index*tileSize, y:i*tileSize}, climate: {value:tilesClimate[index][i]}}
                 }
             })
         })

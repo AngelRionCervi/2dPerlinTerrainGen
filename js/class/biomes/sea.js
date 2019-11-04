@@ -26,7 +26,15 @@ class Sea extends Biomes {
         if(climate === 'hot'){
             return seaColor;
         }else{
+            return iceColor;
+        }
+    }
+
+    getTileColorByNoise(){
+        if(this.climateNoise > 125){
             return seaColor;
+        }else{
+            return iceColor;
         }
     }
 
