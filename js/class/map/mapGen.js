@@ -13,7 +13,8 @@ class Map {
         canvas.height = 900;
 
         for (let n=0; n<closestNumber(canvas.width/tileSize, tileSize); n++){
-            tiles.push(new Array(closestNumber(canvas.height/tileSize, tileSize)).fill(0))
+            tiles.push(new Array(canvas.height/tileSize).fill(0))
+            tilesClimate.push(new Array(canvas.height/tileSize).fill(0))
         }
 
         
@@ -21,6 +22,20 @@ class Map {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         noise.seed(Math.random());
+
+        //create global climate map
+        for (let x = 0; x < canvas.width; x += tileSize) {
+            for (let y = 0; y < canvas.height; y += tileSize) {
+
+                let sea = new Sea();
+
+                let climate = noise.perlin2((x) / 800, (y) / 800);
+                climate = (1 + climate) * 0.9;
+                let tileClimate = Math.abs(climate) * 256;
+
+                tilesClimate[Math.floor(x/tileSize)][Math.floor(y/tileSize)] = tileClimate;
+            }
+        }
 
 
         let primeRectCoor = [];
@@ -99,11 +114,7 @@ class Map {
                     rivers = rivers * 1.2;
                     let tileRivers = Math.abs(rivers) * 256;
 
-                    let idk = noise.perlin2((x+50) / 100, (y+50) / 100);
-                    idk = (1 + idk) * 0.8;
-                    let tileidk = Math.abs(idk) * 256;
-
-                    let tileType = this.biomes.getBiomeByNoise(tileElevation, tileClimate, tileRivers); // returns a biome
+                    let tileType = this.biomes.getBiomeByNoise(tileElevation, tilesClimate[Math.floor((x+v[0])/tileSize)][Math.floor((y+v[1])/tileSize)], tileRivers); // returns a biome
 
                     ctx.globalAlpha = 1;
                     ctx.fillStyle = tileType.getBiomeInfo().color
@@ -119,7 +130,7 @@ class Map {
             subArr.forEach((v, i, a) => {
                 if(v === 0) {
                     let biome = new Sea();
-                    a[i] = {info: biome.getBiomeInfo(), pos:{x:index, y:i}, pixelPos:{x:index*tileSize, y:i*tileSize}}
+                    a[i] = {info: biome.getBiomeInfo(), pos:{x:index, y:i}, pixelPos:{x:index*tileSize, y:i*tileSize}, climate: tilesClimate[index][i]}
                 }
             })
         })

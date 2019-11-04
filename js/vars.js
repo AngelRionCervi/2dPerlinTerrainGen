@@ -3,6 +3,7 @@ let ctx = canvas.getContext("2d");
 let timer = document.getElementById("timer");
 
 let tiles = [];
+let tilesClimate = [];
 
 const tileSize = 4;
 const mainLoopRefreshRate = 1000 //ms
