@@ -1,0 +1,19 @@
+{
+  "name": "2dperlinterraingen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngelRionCervi/2dPerlinTerrainGen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AngelRionCervi/2dPerlinTerrainGen/issues"
+  },
+  "homepage": "https://github.com/AngelRionCervi/2dPerlinTerrainGen#readme"
+}
